@@ -52,7 +52,7 @@ public class KeyValueSurroundedFunction implements Function<Map> {
         
         final Map<String, String> retMap = new HashMap<String,String>();
         
-        Pattern p = Pattern.compile("\\" + target2 + "(^" + target3 + "+)\\" + target3);
+        Pattern p = Pattern.compile("\\" + target2 + "([^" + target3 + "]+)\\" + target3);
         Matcher m = p.matcher(target1);
 
         while(m.find()) {
