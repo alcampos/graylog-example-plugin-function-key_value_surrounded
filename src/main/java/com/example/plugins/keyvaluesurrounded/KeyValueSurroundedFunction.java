@@ -57,10 +57,12 @@ public class KeyValueSurroundedFunction implements Function<Map> {
 
         while(m.find()) {
             String[] key_value = m.group(1).split(target4);
-            String key = key_value[0];
-            String value = key_value[1];
-            if (!key.isEmpty() && !value.isEmpty()) {
-                retMap.put(key, value);
+            if (key_value.length == 2) {
+                String key = key_value[0];
+                String value = key_value[1];
+                if (!key.isEmpty() && !value.isEmpty()) {
+                    retMap.put(key, value);
+                }            	
             }
         }
         
