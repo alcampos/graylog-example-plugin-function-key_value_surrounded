@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.Set;
 
 public class KeyValueSurroundedFunctionMetaData implements PluginMetaData {
-    private static final String PLUGIN_PROPERTIES = "com.example.plugins.graylog-plugin-function-strlen/graylog-plugin.properties";
+    private static final String PLUGIN_PROPERTIES = "com.example.plugins.graylog-plugin-function-key_value_surrounded/graylog-plugin.properties";
 
     @Override
     public String getUniqueId() {
