@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.apache.commons.lang.math.NumberUtils;
 import org.graylog.plugins.pipelineprocessor.EvaluationContext;
 import org.graylog.plugins.pipelineprocessor.ast.expressions.Expression;
 import org.graylog.plugins.pipelineprocessor.ast.functions.Function;
@@ -50,7 +51,7 @@ public class KeyValueSurroundedFunction implements Function<Map> {
         final String target3 = valueParam3.required(functionArgs, evaluationContext);
         final String target4 = valueParam4.required(functionArgs, evaluationContext);
         
-        final Map<String, String> retMap = new HashMap<String,String>();
+        final Map<String, Object> retMap = new HashMap<String,Object>();
         
         Pattern p = Pattern.compile("\\" + target2 + "([^" + target3 + "]+)\\" + target3);
         Matcher m = p.matcher(target1);
@@ -61,7 +62,11 @@ public class KeyValueSurroundedFunction implements Function<Map> {
                 String key = key_value[0];
                 String value = key_value[1];
                 if (!key.isEmpty() && !value.isEmpty()) {
-                    retMap.put(key, value);
+                	if (NumberUtils.isDigits(value)) {
+                		retMap.put(key, Integer.parseInt(value));
+                	} else {
+                		retMap.put(key, value);
+                	}
                 }            	
             }
         }
