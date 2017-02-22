@@ -61,9 +61,9 @@ public class KeyValueSurroundedFunction implements Function<Map> {
             if (key_value.length == 2) {
                 String key = key_value[0];
                 String value = key_value[1];
-                if (!key.isEmpty() && !value.isEmpty()) {
+                if (!key.isEmpty() && !value.isEmpty() && !value.equals("null")) {
                 	if (NumberUtils.isDigits(value)) {
-                		retMap.put(key, Integer.parseInt(value));
+                		retMap.put(key, Long.parseLong(value));
                 	} else {
                 		retMap.put(key, value);
                 	}
